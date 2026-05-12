@@ -12,6 +12,16 @@ module "eks" {
   access_entries = {
     local_admin = {
       principal_arn = "arn:aws:iam::665303624691:user/eks-training-admin"
+
+      # TODO: check out why this policy is needed
+      policy_associations = {
+        admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
     }
   }
 
