@@ -8,8 +8,12 @@ module "eks" {
   endpoint_private_access = true
   endpoint_public_access  = true
 
-  # Adds the current caller identity as an administrator via cluster access entry
-  enable_cluster_creator_admin_permissions = true
+  # explicitly add an admin as an EKS access entry
+  access_entries = {
+    local_admin = {
+      principal_arn = "arn:aws:iam::665303624691:user/eks-training-admin"
+    }
+  }
 
   compute_config = {
     # Turn off Auto Mode
