@@ -10,7 +10,6 @@ env:
   CONFIG_DIRECTORY: "./"
 jobs:
   terraform:
-    if: github.repository != 'qianzhong516/fileops-infra'
     name: "Terraform Apply"
     runs-on: ubuntu-latest
     permissions:

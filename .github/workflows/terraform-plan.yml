@@ -8,7 +8,6 @@ env:
   CONFIG_DIRECTORY: "./"
 jobs:
   terraform:
-    if: github.repository != 'qianzhong516/fileops-infra'
     name: "Terraform Plan"
     runs-on: ubuntu-latest
     permissions:
