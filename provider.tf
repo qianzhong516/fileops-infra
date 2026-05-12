@@ -7,6 +7,14 @@ terraform {
       version = "6.44.0"
     }
   }
+
+  cloud {
+    organization = "janice-zhong"
+
+    workspaces {
+      name = "janice-zhong-fileops"
+    }
+  }
 }
 
 provider "aws" {
