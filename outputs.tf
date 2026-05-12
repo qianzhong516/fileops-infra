@@ -1,7 +1,3 @@
 output "kubectl" {
-  value = <<-EOT
-    aws eks update-kubeconfig \
-      --region ${var.region} \
-      --name ${module.eks.cluster_name}
-  EOT
+  value = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
 }
