@@ -20,7 +20,6 @@ module "eks" {
   subnet_ids = values(aws_subnet.private_subnet)[*].id
 
   # EKS Managed Node Group(s)
-  # TODO: grant session manager access
   eks_managed_node_groups = {
     fileops-node-group = {
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
@@ -30,6 +29,12 @@ module "eks" {
       min_size     = 2
       max_size     = 2
       desired_size = 2
+
+      # TODO: delete this after testing
+      create_iam_role = true
+      iam_role_additional_policies = {
+        ssm = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      }
     }
   }
 
