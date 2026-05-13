@@ -13,7 +13,20 @@ module "eks" {
     local_admin = {
       principal_arn = "arn:aws:iam::665303624691:user/eks-training-admin"
 
-      # TODO: check out why this policy is needed
+      policy_associations = {
+        admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
+    }
+
+    tf_oidc_role = {
+      // TODO: maybe import this data from a remote state?
+      principal_arn = "arn:aws:iam::665303624691:role/tf_oidc_role"
+
       policy_associations = {
         admin = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
