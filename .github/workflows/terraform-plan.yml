@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull-requests: read
     outputs:
       eks: ${{ steps.filter.outputs.eks }}
       helm: ${{ steps.filter.outputs.helm }}
