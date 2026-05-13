@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull-requests: read
     outputs:
       eks: ${{ steps.filter.outputs.eks }}
       helm: ${{ steps.filter.outputs.helm }}
@@ -113,8 +114,9 @@ jobs:
 
   plan-helm:
     name: "Terraform Plan (helm)"
-    needs: changes
+    needs: [changes, plan-eks]
     if: |
+      always() &&
       needs.changes.outputs.helm == 'true' &&
       (needs.plan-eks.result == 'success' || needs.plan-eks.result == 'skipped')
     runs-on: ubuntu-latest

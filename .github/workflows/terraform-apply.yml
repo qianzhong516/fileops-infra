@@ -73,7 +73,9 @@ jobs:
     name: "Terraform Apply (helm)"
     needs: [changes, apply-eks]
     # Run after EKS when both stacks changed; if only helm changed, `apply-eks` is skipped — still run helm.
+    # `always()` is required so this job is not auto-skipped when `apply-eks` is skipped (GitHub default).
     if: |
+      always() &&
       needs.changes.outputs.helm == 'true' &&
       (needs.apply-eks.result == 'success' || needs.apply-eks.result == 'skipped')
     runs-on: ubuntu-latest
