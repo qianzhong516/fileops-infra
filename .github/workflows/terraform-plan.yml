@@ -113,8 +113,9 @@ jobs:
 
   plan-helm:
     name: "Terraform Plan (helm)"
-    needs: changes
+    needs: [changes, plan-eks]
     if: |
+      always() &&
       needs.changes.outputs.helm == 'true' &&
       (needs.plan-eks.result == 'success' || needs.plan-eks.result == 'skipped')
     runs-on: ubuntu-latest
