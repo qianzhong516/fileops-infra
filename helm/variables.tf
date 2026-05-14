@@ -18,4 +18,5 @@ variable "git_ssh_private_key" {
 locals {
   cluster_ca_certificate = data.aws_eks_cluster.cluster.certificate_authority[0].data
   cluster_endpoint       = data.aws_eks_cluster.cluster.endpoint
+  cluster_token          = data.aws_eks_cluster_auth.cluster.token
 }
