@@ -30,9 +30,20 @@ data "aws_eks_cluster" "cluster" {
   name = var.cluster_name
 }
 
+provider "kubernetes" {
+  host                   = local.cluster_endpoint
+  cluster_ca_certificate = base64decode(local.cluster_ca_certificate)
+
+  exec {
+    api_version = "client.authentication.k8s.io/v1"
+    args        = ["eks", "get-token", "--cluster-name", var.cluster_name]
+    command     = "aws"
+  }
+}
+
 provider "helm" {
   kubernetes = {
-    host                   = data.aws_eks_cluster.cluster.endpoint
+    host                   = local.cluster_endpoint
     cluster_ca_certificate = base64decode(local.cluster_ca_certificate)
 
     exec = {
