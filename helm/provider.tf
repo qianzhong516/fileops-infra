@@ -11,6 +11,11 @@ terraform {
       source  = "hashicorp/helm"
       version = "3.1.1"
     }
+
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "3.1.0"
+    }
   }
 
   cloud {
@@ -23,15 +28,15 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
+  region = local.region
 }
 
 data "aws_eks_cluster" "cluster" {
-  name = var.cluster_name
+  name = local.cluster_name
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = var.cluster_name
+  name = local.cluster_name
 }
 
 provider "kubernetes" {

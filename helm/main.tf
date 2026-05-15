@@ -23,11 +23,29 @@ resource "kubernetes_manifest" "argocd_configs" {
     }
     spec = {
       project = "default"
-      source = {
-        repoURL        = "git@github.com:qianzhong516/fileops-app-manifests.git"
-        targetRevision = "HEAD"
-        path           = "manifests"
-      }
+      sources = [
+        {
+          repoURL        = "git@github.com:qianzhong516/fileops-app-manifests.git"
+          targetRevision = "HEAD"
+          path           = "manifests"
+        },
+        {
+          repoURL        = "https://aws.github.io/eks-charts"
+          chart          = "aws-load-balancer-controller"
+          targetRevision = "3.3.0"
+          helm = {
+            releaseName = "aws-load-balancer-controller"
+            namespace   = "kube-system"
+            # `vpcId` is required here because IBC pods can't access EC2 Instance MetaData to fetch `vpcId`
+            values = <<-EOF
+            clusterName: fileops-cluster
+            vpcId: ${local.vpc_id}
+            region: ${local.region}
+          EOF
+          }
+        }
+      ]
+
       destination = {
         server    = "https://kubernetes.default.svc"
         namespace = "app"

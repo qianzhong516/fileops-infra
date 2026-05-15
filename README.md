@@ -5,11 +5,11 @@
 The infrastructure setup is divided into two parts:
 
 1. The EKS cluster setup
-2. The workload setup within the EKS cluster
+2. The helm installation within the EKS cluster
 
 In the EKS cluster setup, the focus is on setting up network, worker nodes, IGW, NATs, infrastructure components surrounding the cluster.
 
-In the workload setup, the focus is on setting up the ArgoCD workloads because the FileOps project follows GitOps principals and a separate repo is going to be used for managing workload manifests.
+In the helm installation step, the focus is on setting up ArgoCD and its load balancers because the FileOps project follows GitOps principals and a separate repo is going to be used for managing workload manifests.
 
 ## Git Workflows
 
