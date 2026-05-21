@@ -49,7 +49,7 @@ resource "aws_iam_policy" "argocd_repo_server" {
           "kms:Decrypt",
           "kms:DescribeKey"
         ]
-        Resource = "arn:aws:kms:ap-southeast-2:665303624691:alias/fileops-dev"
+        Resource = "arn:aws:kms:ap-southeast-2:665303624691:key/ddb3f1ef-5194-4fa2-b4e1-e914831a249b"
       }
     ]
   })
