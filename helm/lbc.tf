@@ -1,16 +1,4 @@
-data "aws_caller_identity" "current" {}
-
-# TODO: Remote state sharing exposes sensitive info to the consumer (if any). Publish non-sensitive configurations to a 3rd party storage like S3 for security.
-data "terraform_remote_state" "state" {
-  backend = "remote"
-
-  config = {
-    organization = "janice-zhong"
-    workspaces = {
-      name = "janice-zhong-fileops"
-    }
-  }
-}
+# This file is to grant permissions to the service account used by Load Balancer Controller
 
 // Pod identity for Load Balancer Controllers
 resource "aws_eks_pod_identity_association" "lbc" {

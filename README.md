@@ -1,5 +1,20 @@
 # FileOps Infrasturcture Terraform Setup
 
+## Set up
+
+Run the following commands in sequence:
+
+```bash
+cd eks/
+t apply --auto-approve
+```
+
+```bash
+cd helm/
+t apply --target helm_release.argocd --auto-approve
+t apply --auto-approve
+```
+
 ## Intro
 
 The infrastructure setup is divided into two parts:

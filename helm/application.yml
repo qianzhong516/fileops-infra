@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fileops-dev
+  namespace: ${argocd_namespace}
+spec:
+  project: default
+
+  sources:
+    - repoURL: git@github.com:qianzhong516/fileops-app-manifests.git
+      targetRevision: HEAD
+      path: overlays/dev
+      kustomize: {}
+
+  destination:
+    server: https://kubernetes.default.svc
+
+  syncPolicy:
+    automated:
+      prune: true # Specifies if resources should be pruned during auto-syncing
+      # selfHeal = true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected
+    syncOptions:
+      - CreateNamespace=true

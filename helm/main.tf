@@ -7,63 +7,28 @@ resource "helm_release" "argocd" {
   namespace        = var.argocd_namespace
   create_namespace = true
 
-  # values = [
-  #   file("${path.module}/argocd-values.yml")
-  # ]
+  values = [
+    file("${path.module}/argocd-values.yml")
+  ]
 }
 
-# Create application.yaml for ArgoCD
-resource "kubernetes_manifest" "argocd_configs" {
-  manifest = {
-    apiVersion = "argoproj.io/v1alpha1"
-    kind       = "Application"
-    metadata = {
-      name      = "argocd-configs"
-      namespace = var.argocd_namespace
-    }
-    spec = {
-      project = "default"
-      sources = [
-        {
-          repoURL        = "git@github.com:qianzhong516/fileops-app-manifests.git"
-          targetRevision = "HEAD"
-          path           = "manifests"
-        },
-        {
-          repoURL        = "https://aws.github.io/eks-charts"
-          chart          = "aws-load-balancer-controller"
-          targetRevision = "3.3.0"
-          helm = {
-            releaseName = "aws-load-balancer-controller"
-            namespace   = "kube-system"
-            # `vpcId` is required here because IBC pods can't access EC2 Instance MetaData to fetch `vpcId`
-            values = <<-EOF
-            clusterName: fileops-cluster
-            vpcId: ${local.vpc_id}
-            region: ${local.region}
-          EOF
-          }
-        }
-      ]
-
-      destination = {
-        server    = "https://kubernetes.default.svc"
-        namespace = "app"
-      }
-
-      syncPolicy = {
-        automated = {
-          prune    = true # Specifies if resources should be pruned during auto-syncing
-          selfHeal = true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected 
-        }
-
-        syncOptions = ["CreateNamespace=true"]
-      }
-    }
-  }
+# Create app workloads in ArgoCD
+resource "kubernetes_manifest" "app_workloads" {
+  manifest = yamldecode(templatefile("${path.module}/application.yml", {
+    argocd_namespace = var.argocd_namespace
+  }))
 }
 
-# TODO: Manage this secret using AWS Secrets Manager + External Secrets Operator
+# Create argocd workloads in ArgoCD
+resource "kubernetes_manifest" "argocd_workloads" {
+  manifest = yamldecode(templatefile("${path.module}/argocd-application.yml", {
+    argocd_namespace = var.argocd_namespace
+    vpc_id           = local.vpc_id
+    region           = local.region
+  }))
+}
+
+# TODO: Move this to the manifest repo
 resource "kubernetes_manifest" "git_repo_secret" {
   manifest = {
     apiVersion = "v1"

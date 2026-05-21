@@ -1,0 +1,37 @@
+configs:
+  params:
+    server.insecure: true
+  # Enable external Kustomize plugins
+  cm:
+    kustomize.buildOptions: --enable-alpha-plugins --enable-exec
+
+# Repo server is the single service responsible for generating Kubernetes manifests
+repoServer:
+  env:
+    # Allow tools to write into a known writable directory
+    - name: XDG_CONFIG_HOME
+      value: /.config
+  # 1. Define an emptyDir volume which will hold the custom binaries
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+
+  # 2. Use an init container to download/copy custom binaries into the emptyDir
+  # --with-kustomize overrides the default kustomize from ArgoCD. This ensures tool compatibility with KSOPS. Reference: https://github.com/viaduct-ai/kustomize-sops/releases/tag/v4.5.1
+  initContainers:
+    - name: install-ksops
+      image: viaductoss/ksops:v4.5.1
+      command:
+        ["/usr/local/bin/ksops", "install", "--with-kustomize", "/custom-tools"]
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+
+  # 3. Volume mount the custom binary to the bin directory (overriding the existing version)
+  volumeMounts:
+    - mountPath: /usr/local/bin/ksops
+      subPath: ksops
+      name: custom-tools
+    - mountPath: /usr/local/bin/kustomize
+      subPath: kustomize
+      name: custom-tools
