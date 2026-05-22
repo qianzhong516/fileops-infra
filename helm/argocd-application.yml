@@ -12,6 +12,7 @@ spec:
       path: argocd
       kustomize: {}
 
+    # TODO: Move LBC out of here to prevent app deletion conflicts
     - repoURL: https://aws.github.io/eks-charts
       chart: aws-load-balancer-controller
       targetRevision: 3.3.0
