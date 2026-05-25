@@ -36,6 +36,9 @@ jobs:
 
   plan-cluster:
     needs: changes
+    permissions:
+      contents: read
+      pull-requests: write
     if: needs.changes.outputs.cluster == 'true'
     uses: ./.github/workflows/terraform-plan-stack.yml
     with:
@@ -46,6 +49,9 @@ jobs:
 
   plan-data:
     needs: [changes, plan-cluster]
+    permissions:
+      contents: read
+      pull-requests: write
     if: |
       always() &&
       needs.changes.outputs.data == 'true' &&
@@ -59,6 +65,9 @@ jobs:
 
   plan-platform-addons:
     needs: [changes, plan-cluster]
+    permissions:
+      contents: read
+      pull-requests: write
     if: |
       always() &&
       needs.changes.outputs.platform-addons == 'true' &&
@@ -72,6 +81,9 @@ jobs:
 
   plan-workloads:
     needs: [changes, plan-platform-addons, plan-data]
+    permissions:
+      contents: read
+      pull-requests: write
     if: |
       always() &&
       needs.changes.outputs.workloads == 'true' &&
