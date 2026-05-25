@@ -9,9 +9,9 @@ resource "aws_kms_key" "eks_encryption_key" {
   enable_key_rotation     = true
   deletion_window_in_days = 7
 
-  lifecycle {
-    prevent_destroy = true
-  }
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 
   policy = jsonencode({
     Version = "2012-10-17"

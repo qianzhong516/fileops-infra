@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.15.2"
+  required_version = "1.15.4"
 
   required_providers {
     aws = {
@@ -22,7 +22,7 @@ terraform {
     organization = "janice-zhong"
 
     workspaces {
-      name = "janice-zhong-fileops-workload-configs"
+      name = "janice-zhong-fileops-workloads"
     }
   }
 }
@@ -43,12 +43,4 @@ provider "kubernetes" {
   host                   = local.cluster_endpoint
   cluster_ca_certificate = base64decode(local.cluster_ca_certificate)
   token                  = local.cluster_token
-}
-
-provider "helm" {
-  kubernetes = {
-    host                   = local.cluster_endpoint
-    cluster_ca_certificate = base64decode(local.cluster_ca_certificate)
-    token                  = local.cluster_token
-  }
 }

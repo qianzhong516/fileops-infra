@@ -13,16 +13,16 @@ spec:
       kustomize: {}
 
     # TODO: Move LBC out of here to prevent app deletion conflicts
-    - repoURL: https://aws.github.io/eks-charts
-      chart: aws-load-balancer-controller
-      targetRevision: 3.3.0
-      helm:
-        releaseName: aws-load-balancer-controller
-        namespace: kube-system
-        values: |
-          clusterName: fileops-cluster
-          vpcId: ${vpc_id}
-          region: ${region}
+    # - repoURL: https://aws.github.io/eks-charts
+    #   chart: aws-load-balancer-controller
+    #   targetRevision: 3.3.0
+    #   helm:
+    #     releaseName: aws-load-balancer-controller
+    #     namespace: kube-system
+    #     values: |
+    #       clusterName: fileops-cluster
+    #       vpcId: ${vpc_id}
+    #       region: ${region}
 
   destination:
     server: https://kubernetes.default.svc

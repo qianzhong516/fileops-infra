@@ -67,17 +67,17 @@ resource "aws_route_table" "private_route_table" {
 }
 
 resource "aws_route_table_association" "public" {
-  for_each = aws_route_table.public_route_table
+  for_each = var.public_subnets
 
   subnet_id      = aws_subnet.public_subnet[each.key].id
-  route_table_id = each.value.id
+  route_table_id = aws_route_table.public_route_table[each.key].id
 }
 
 resource "aws_route_table_association" "private" {
-  for_each = aws_route_table.private_route_table
+  for_each = var.private_subnets
 
   subnet_id      = aws_subnet.private_subnet[each.key].id
-  route_table_id = each.value.id
+  route_table_id = aws_route_table.private_route_table[each.key].id
 }
 
 resource "aws_internet_gateway" "igw" {

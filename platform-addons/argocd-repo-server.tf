@@ -1,4 +1,4 @@
-# This file is to grant permissions to the service account used by ArgoCD Repo-server
+# This file is to grant permissions to the service account used by ArgoCD Repo-server to perform SOPS operations
 
 // Pod identity
 resource "aws_eks_pod_identity_association" "argocd_repo_server" {
@@ -66,9 +66,9 @@ resource "aws_kms_key" "sops_key" {
   enable_key_rotation     = true
   deletion_window_in_days = 7
 
-  lifecycle {
-    prevent_destroy = true
-  }
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 
   policy = jsonencode({
     Version = "2012-10-17"

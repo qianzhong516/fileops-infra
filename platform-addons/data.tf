@@ -7,7 +7,7 @@ data "terraform_remote_state" "state" {
   config = {
     organization = "janice-zhong"
     workspaces = {
-      name = "janice-zhong-fileops"
+      name = "janice-zhong-fileops-cluster"
     }
   }
 }

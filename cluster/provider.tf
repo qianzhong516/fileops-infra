@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.15.2"
+  required_version = "1.15.4"
 
   required_providers {
     aws = {
@@ -12,7 +12,7 @@ terraform {
     organization = "janice-zhong"
 
     workspaces {
-      name = "janice-zhong-fileops"
+      name = "janice-zhong-fileops-cluster"
     }
   }
 }

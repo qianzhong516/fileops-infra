@@ -3,11 +3,6 @@ variable "argocd_namespace" {
   default = "argocd"
 }
 
-variable "git_ssh_private_key" {
-  type      = string
-  sensitive = true
-}
-
 locals {
   region                 = data.terraform_remote_state.state.outputs.region
   cluster_name           = data.terraform_remote_state.state.outputs.cluster_name
@@ -17,4 +12,9 @@ locals {
   account_id             = data.aws_caller_identity.current.id
   vpc_id                 = data.terraform_remote_state.state.outputs.vpc_id
   tags                   = data.terraform_remote_state.state.outputs.tags
+}
+
+variable "git_ssh_private_key" {
+  type      = string
+  sensitive = true
 }
