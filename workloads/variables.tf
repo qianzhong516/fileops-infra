@@ -1,8 +1,3 @@
-
-variable "argocd_namespace" {
-  default = "argocd"
-}
-
 locals {
   region                 = data.terraform_remote_state.state.outputs.region
   cluster_name           = data.terraform_remote_state.state.outputs.cluster_name

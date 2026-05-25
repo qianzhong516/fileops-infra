@@ -1,7 +1,7 @@
 # Create app workloads in ArgoCD
 resource "kubernetes_manifest" "app_workloads" {
   manifest = yamldecode(templatefile("${path.module}/manifests/application.yml", {
-    argocd_namespace = var.argocd_namespace
+    argocd_namespace = "argocd"
   }))
 }
 
@@ -12,7 +12,7 @@ resource "kubernetes_manifest" "git_repo_secret" {
     kind       = "Secret"
     metadata = {
       name      = "private-repo"
-      namespace = var.argocd_namespace
+      namespace = "argocd"
       labels = {
         "argocd.argoproj.io/secret-type" = "repository"
       }
@@ -28,7 +28,7 @@ resource "kubernetes_manifest" "git_repo_secret" {
 # Create argocd workloads in ArgoCD
 resource "kubernetes_manifest" "argocd_workloads" {
   manifest = yamldecode(templatefile("${path.module}/manifests/argocd-application.yml", {
-    argocd_namespace = var.argocd_namespace
+    argocd_namespace = "argocd"
     vpc_id           = local.vpc_id
     region           = local.region
   }))

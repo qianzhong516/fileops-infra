@@ -3,7 +3,7 @@
 // Pod identity
 resource "aws_eks_pod_identity_association" "argocd_repo_server" {
   cluster_name = local.cluster_name
-  namespace    = var.argocd_namespace
+  namespace    = "argocd"
   // This SA is created via Helm
   service_account = "argocd-repo-server"
   region          = local.region
