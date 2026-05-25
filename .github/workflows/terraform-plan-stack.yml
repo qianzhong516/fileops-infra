@@ -12,6 +12,9 @@ on:
       directory:
         required: true
         type: string
+      tf_cloud_organization:
+        required: true
+        type: string
     secrets:
       TF_API_TOKEN:
         required: true
@@ -20,6 +23,10 @@ jobs:
   tf-plan:
     name: "Terraform Plan"
     runs-on: ubuntu-latest
+    env:
+      TF_CLOUD_ORGANIZATION: ${{ inputs.tf_cloud_organization }}
+      TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
+
     permissions:
       contents: read
       pull-requests: write
@@ -28,15 +35,17 @@ jobs:
       - uses: actions/checkout@v6
       - uses: hashicorp/setup-terraform@v4
         with:
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          cli_config_credentials_token: ${{ env.TF_API_TOKEN }}
 
       - name: Terraform Init
         id: init
         run: terraform init -input=false
+        working-directory: ${{ inputs.directory }}
 
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
+        working-directory: ${{ inputs.directory }}
 
       - name: Upload Configuration
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.3.2
@@ -64,7 +73,7 @@ jobs:
         uses: actions/github-script@v9
         id: plan-comment
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           script: |
             const stack = '${{ inputs.stack }}';
             const marker = `<!-- terraform-plan:${stack} -->`;
