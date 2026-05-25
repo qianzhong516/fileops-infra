@@ -3,7 +3,7 @@
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = "fileops-vpc"
   })
 }
@@ -15,7 +15,7 @@ resource "aws_subnet" "public_subnet" {
   cidr_block        = each.value
   availability_zone = var.availability_zones[each.key]
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = each.key
   })
 }
@@ -27,7 +27,7 @@ resource "aws_subnet" "private_subnet" {
   cidr_block        = each.value
   availability_zone = var.availability_zones[each.key]
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = each.key
   })
 }
@@ -44,7 +44,7 @@ resource "aws_route_table" "public_route_table" {
 
   depends_on = [aws_subnet.public_subnet]
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = "${each.key}-route-table"
   })
 }
@@ -61,7 +61,7 @@ resource "aws_route_table" "private_route_table" {
 
   depends_on = [aws_subnet.private_subnet]
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = "${each.key}-route-table"
   })
 }
@@ -83,7 +83,7 @@ resource "aws_route_table_association" "private" {
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = "fileops-igw"
   })
 }
@@ -97,7 +97,7 @@ resource "aws_nat_gateway" "nat" {
 
   depends_on = [aws_internet_gateway.igw]
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = "fileops-nat"
   })
 }

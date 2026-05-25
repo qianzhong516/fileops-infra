@@ -7,7 +7,7 @@ output "vpc_id" {
 }
 
 output "tags" {
-  value = local.tags
+  value = var.tags
 }
 
 output "cluster_name" {

@@ -83,7 +83,7 @@ module "eks" {
     }
   }
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = "fileops-cluster"
   })
 }
