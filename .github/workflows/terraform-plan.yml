@@ -31,7 +31,7 @@ jobs:
               - 'data/**'
             platform-addons:
               - 'platform-addons/**'
-            workloads
+            workloads:
               - 'workloads/**'
 
   plan-cluster:
