@@ -15,8 +15,10 @@ jobs:
     permissions:
       contents: read
     outputs:
-      eks: ${{ steps.filter.outputs.eks }}
-      helm: ${{ steps.filter.outputs.helm }}
+      cluster: ${{ steps.filter.outputs.cluster }}
+      data: ${{ steps.filter.outputs.data }}
+      platform-addons: ${{ steps.filter.outputs.platform-addons }}
+      workloads: ${{ steps.filter.outputs.workloads }}
     steps:
       - uses: actions/checkout@v6
 

@@ -17,7 +17,3 @@ output "cluster_name" {
 output "region" {
   value = var.region
 }
-
-output "workflow_test" {
-  value = "cluster"
-}

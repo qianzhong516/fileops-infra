@@ -56,5 +56,4 @@
 | <a name="output_region"></a> [region](#output\_region) | n/a |
 | <a name="output_tags"></a> [tags](#output\_tags) | n/a |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
-| <a name="output_workflow_test"></a> [workflow\_test](#output\_workflow\_test) | n/a |
 <!-- END_TF_DOCS -->

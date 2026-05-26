@@ -38,7 +38,5 @@ No modules.
 
 ## Outputs
 
-| Name | Description |
-| ---- | ----------- |
-| <a name="output_workflow_test"></a> [workflow\_test](#output\_workflow\_test) | n/a |
+No outputs.
 <!-- END_TF_DOCS -->
