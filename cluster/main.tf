@@ -30,7 +30,6 @@ module "eks" {
     }
 
     tf_oidc_role = {
-      // TODO: maybe import this data from a remote state?
       principal_arn = "arn:aws:iam::665303624691:role/tf_oidc_role"
 
       policy_associations = {
@@ -63,12 +62,6 @@ module "eks" {
       min_size     = 2
       max_size     = 2
       desired_size = 2
-
-      # TODO: delete this after testing
-      create_iam_role = true
-      iam_role_additional_policies = {
-        ssm = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-      }
     }
   }
 
