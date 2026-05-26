@@ -63,12 +63,6 @@ module "eks" {
       min_size     = 2
       max_size     = 2
       desired_size = 2
-
-      # TODO: delete this after testing
-      create_iam_role = true
-      iam_role_additional_policies = {
-        ssm = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-      }
     }
   }
 
