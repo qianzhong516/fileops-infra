@@ -25,7 +25,6 @@ No modules.
 | Name | Type |
 | ---- | ---- |
 | [kubernetes_manifest.app_workloads](https://registry.terraform.io/providers/hashicorp/kubernetes/3.1.0/docs/resources/manifest) | resource |
-| [kubernetes_manifest.argocd_workloads](https://registry.terraform.io/providers/hashicorp/kubernetes/3.1.0/docs/resources/manifest) | resource |
 | [kubernetes_manifest.git_repo_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/3.1.0/docs/resources/manifest) | resource |
 | [aws_eks_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/eks_cluster) | data source |
 | [aws_eks_cluster_auth.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/eks_cluster_auth) | data source |
