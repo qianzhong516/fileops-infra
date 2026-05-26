@@ -30,7 +30,6 @@ module "eks" {
     }
 
     tf_oidc_role = {
-      // TODO: maybe import this data from a remote state?
       principal_arn = "arn:aws:iam::665303624691:role/tf_oidc_role"
 
       policy_associations = {
