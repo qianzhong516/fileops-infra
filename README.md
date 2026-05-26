@@ -2,36 +2,40 @@
 
 ## Set up
 
-Run the following commands in sequence:
+To start deploying the app:
 
 ```bash
-cd eks/
-t apply --auto-approve
+cd scripts/
+./start.sh
 ```
 
+## Destroy
+
 ```bash
-cd helm/
-t apply --target helm_release.argocd --auto-approve
-t apply --auto-approve
+cd scripts/
+./destroy.sh
 ```
 
 ## Intro
 
-The infrastructure setup is divided into two parts:
+The infrastructure setup is divided into a few parts:
 
-1. The EKS cluster setup
-2. The helm installation within the EKS cluster
+1. The EKS cluster setup (`cluster/`)
+2. Data resources (`data/`): RDS Database
+3. Platform (`platform-addons/`): ArgoCD, Load Balancer Controller
+4. Workloads (`workloads/`): ArgoCD apps
 
-In the EKS cluster setup, the focus is on setting up network, worker nodes, IGW, NATs, infrastructure components surrounding the cluster.
+## GitOps Tools
 
-In the helm installation step, the focus is on setting up ArgoCD and its load balancers because the FileOps project follows GitOps principals and a separate repo is going to be used for managing workload manifests.
+`tflint` and `t validate` are added to precommit hooks.
 
-## Git Workflows
+## GitHub Workflows
 
-- `terraform plan` runs when a PR is created/modified.
-- `terraform apply` runs when a PR is merged/a push to the `main` branch
+`terraform plan` is built into the CI pipeline.
 
-The workflows are run against the `eks/` or `helm/` based on where changes are from. Workflows can be run aginst both directories in one go but the workflow for `helm/` is always run after the workflow for `eks/` completes.
+## Terraform Docs
+
+Each resource group has its Terraform doc embedded in the README.md.
 
 ## Remote State
 
