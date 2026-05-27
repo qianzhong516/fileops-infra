@@ -10,25 +10,31 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.44.0 |
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+| ---- | ------ | ------- |
+| <a name="module_rds"></a> [rds](#module\_rds) | terraform-aws-modules/rds/aws | 7.2.0 |
 
 ## Resources
 
-No resources.
+| Name | Type |
+| ---- | ---- |
+| [aws_security_group.rds](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/security_group) | resource |
+| [terraform_remote_state.state](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-| ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_region"></a> [region](#input\_region) | n/a | `string` | `"ap-southeast-2"` | no |
+No inputs.
 
 ## Outputs
 
 | Name | Description |
 | ---- | ----------- |
-| <a name="output_workflow_test"></a> [workflow\_test](#output\_workflow\_test) | n/a |
+| <a name="output_db_url"></a> [db\_url](#output\_db\_url) | n/a |
 <!-- END_TF_DOCS -->

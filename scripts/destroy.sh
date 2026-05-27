@@ -13,10 +13,17 @@ done
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-echo "Destorying the argocd apps..."
-argocd app delete fileops-dev --cascade
-argocd app delete argo-infra --cascade
-echo "Destorying the argocd apps is complete."
+# TODO: Enable ArgoCD commands after the GRPC server is properly set up
+# if argocd app get fileops-dev >/dev/null 2>&1; then
+# 	echo "Destorying the app workloads..."
+# 	argocd app delete fileops-dev --cascade
+# 	echo "Destorying the app workloads is complete"
+# fi
+# if argocd app get argo-infra >/dev/null 2>&1; then
+# 	echo "Destorying the argocd infra workloads..."
+# 	argocd app delete argo-infra --cascade
+# 	echo "Destorying the argocd infra is complete."
+# fi
 
 cd "$ROOT_DIR"/workloads
 echo "Destorying the workload resources..."

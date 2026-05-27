@@ -17,3 +17,11 @@ output "cluster_name" {
 output "region" {
   value = var.region
 }
+
+output "private_subnet_ids" {
+  value = values(aws_subnet.private_subnet)[*].id
+}
+
+output "cluster_node_security_group_id" {
+  value = module.eks.node_security_group_id
+}
