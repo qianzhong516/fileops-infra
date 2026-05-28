@@ -1,3 +1,3 @@
-output "db_url" {
+output "db_host" {
   value = module.rds.db_instance_endpoint
 }

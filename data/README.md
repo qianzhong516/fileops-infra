@@ -25,6 +25,10 @@
 
 | Name | Type |
 | ---- | ---- |
+| [aws_eks_pod_identity_association.backend_db_secret](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/eks_pod_identity_association) | resource |
+| [aws_iam_policy.backend_db_secret](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_policy) | resource |
+| [aws_iam_role.backend_db_secret](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.backend_db_secret](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_security_group.rds](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/security_group) | resource |
 | [terraform_remote_state.state](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
@@ -36,5 +40,5 @@ No inputs.
 
 | Name | Description |
 | ---- | ----------- |
-| <a name="output_db_url"></a> [db\_url](#output\_db\_url) | n/a |
+| <a name="output_db_host"></a> [db\_host](#output\_db\_host) | n/a |
 <!-- END_TF_DOCS -->

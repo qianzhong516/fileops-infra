@@ -68,12 +68,14 @@ module "eks" {
   addons = {
     coredns = {}
     eks-pod-identity-agent = {
+      # Install this add-on before worker nodes/node groups are created
       before_compute = true
     }
     kube-proxy = {}
     vpc-cni = {
       before_compute = true
     }
+    aws-secrets-store-csi-driver-provider = {}
   }
 
   tags = merge(var.tags, {
