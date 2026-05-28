@@ -25,3 +25,7 @@ output "private_subnet_ids" {
 output "cluster_node_security_group_id" {
   value = module.eks.node_security_group_id
 }
+
+output "cluster_oidc_provider" {
+  value = module.eks.oidc_provider
+}

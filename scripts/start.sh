@@ -43,6 +43,12 @@ echo "Deploying cluster infra..."
 terraform apply --auto-approve
 echo "EKS cluster has been deployed successfully."
 
+cd "$ROOT_DIR"/data
+echo "Deploying data infra..."
+terraform apply --auto-approve
+echo "Data infra has been deployed successfully."
+rds_secret_arn=$(terraform output -raw rds_secret_arn)
+
 cd "$ROOT_DIR"/platform-addons
 if ! terraform state show aws_kms_key.sops_key >/dev/null 2>&1; then
 	echo "Importing SOPS encryption key..."
@@ -57,3 +63,10 @@ cd "$ROOT_DIR"/workloads
 echo "Deploying workloads..."
 terraform apply --auto-approve
 echo "Workloads have been deployed successfully."
+
+cat <<EOF
+=====================================
+Congratulations! Deployment is successful. Please perform the following steps next:
+1) Update the secret object name for \`db-secrets\` in app manifests to $rds_secret_arn
+=====================================
+EOF

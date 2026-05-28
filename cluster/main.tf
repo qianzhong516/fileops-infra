@@ -75,7 +75,6 @@ module "eks" {
     vpc-cni = {
       before_compute = true
     }
-    aws-secrets-store-csi-driver-provider = {}
   }
 
   tags = merge(var.tags, {

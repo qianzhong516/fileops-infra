@@ -1,3 +1,5 @@
+# TODO: Pod Identity Associations don't work properly with Secrets Store CSI Driver. See the issue @ https://github.com/aws/secrets-store-csi-driver-provider-aws/issues/300. Though PR fixes had been submitted, the issue still persist when tested on the release v3.1.0-eksbuild.1.
+
 # Create an IAM role which will be assumed by backend pods to fetch db credentials
 resource "aws_iam_role" "backend_db_secret" {
   name = "fileops-backend-db-secret-role"
@@ -6,13 +8,15 @@ resource "aws_iam_role" "backend_db_secret" {
     Statement = [
       {
         Effect = "Allow"
-
-        Action = [
-          "sts:AssumeRole",
-          "sts:TagSession"
-        ]
+        Action = ["sts:AssumeRoleWithWebIdentity"]
         Principal = {
-          Service = "pods.eks.amazonaws.com"
+          Federated = "arn:aws:iam::${local.account_id}:oidc-provider/${local.cluster_oidc_provider}"
+        }
+        Condition = {
+          StringEquals = {
+            "${local.cluster_oidc_provider}:aud" = "sts.amazonaws.com"
+            "${local.cluster_oidc_provider}:sub" = "system:serviceaccount:dev:backend-db-secrets"
+          }
         }
       },
     ]
@@ -42,12 +46,4 @@ resource "aws_iam_policy" "backend_db_secret" {
 resource "aws_iam_role_policy_attachment" "backend_db_secret" {
   policy_arn = aws_iam_policy.backend_db_secret.arn
   role       = aws_iam_role.backend_db_secret.name
-}
-
-# Map that service account with the IAM role via pod identity association
-resource "aws_eks_pod_identity_association" "backend_db_secret" {
-  cluster_name    = local.cluster_name
-  namespace       = "dev"
-  service_account = "backend-aws-secret"
-  role_arn        = aws_iam_role.backend_db_secret.arn
 }

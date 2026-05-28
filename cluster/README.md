@@ -53,6 +53,7 @@
 | ---- | ----------- |
 | <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | n/a |
 | <a name="output_cluster_node_security_group_id"></a> [cluster\_node\_security\_group\_id](#output\_cluster\_node\_security\_group\_id) | n/a |
+| <a name="output_cluster_oidc_provider"></a> [cluster\_oidc\_provider](#output\_cluster\_oidc\_provider) | n/a |
 | <a name="output_kubectl"></a> [kubectl](#output\_kubectl) | n/a |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | n/a |
 | <a name="output_region"></a> [region](#output\_region) | n/a |

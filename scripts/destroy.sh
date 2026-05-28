@@ -35,6 +35,11 @@ echo "Destorying the platform resources..."
 terraform destroy --auto-approve
 echo "Destorying the platform resources is complete."
 
+cd "$ROOT_DIR"/data
+echo "Destorying the data resources..."
+terraform destroy --auto-approve
+echo "Destorying the data resources is complete."
+
 cd "$ROOT_DIR"/cluster
 echo "Destorying the cluster resources..."
 terraform destroy --auto-approve
