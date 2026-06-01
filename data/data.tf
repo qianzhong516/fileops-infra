@@ -11,3 +11,7 @@ data "terraform_remote_state" "state" {
     }
   }
 }
+
+data "aws_secretsmanager_secret" "db_secret" {
+  arn = module.rds.db_instance_master_user_secret_arn
+}

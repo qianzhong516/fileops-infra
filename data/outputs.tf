@@ -1,7 +1,7 @@
 output "db_host" {
-  value = module.rds.db_instance_endpoint
+  value = module.rds.db_instance_address
 }
 
-output "rds_secret_arn" {
-  value = module.rds.db_instance_master_user_secret_arn
+output "rds_secret_name" {
+  value = data.aws_secretsmanager_secret.db_secret.name
 }

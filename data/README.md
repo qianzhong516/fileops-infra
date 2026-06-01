@@ -32,6 +32,7 @@
 | [aws_security_group.rds](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/security_group) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/caller_identity) | data source |
 | [aws_route53_zone.fileops](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/route53_zone) | data source |
+| [aws_secretsmanager_secret.db_secret](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/secretsmanager_secret) | data source |
 | [terraform_remote_state.state](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs
@@ -43,5 +44,5 @@ No inputs.
 | Name | Description |
 | ---- | ----------- |
 | <a name="output_db_host"></a> [db\_host](#output\_db\_host) | n/a |
-| <a name="output_rds_secret_arn"></a> [rds\_secret\_arn](#output\_rds\_secret\_arn) | n/a |
+| <a name="output_rds_secret_name"></a> [rds\_secret\_name](#output\_rds\_secret\_name) | n/a |
 <!-- END_TF_DOCS -->
