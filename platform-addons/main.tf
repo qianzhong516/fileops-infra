@@ -44,3 +44,26 @@ resource "helm_release" "secrets_store_aws" {
     })
   ]
 }
+
+resource "helm_release" "prometheus" {
+  name             = "prometheus"
+  repository       = "https://prometheus-community.github.io/helm-charts"
+  chart            = "prometheus"
+  namespace        = "prometheus"
+  create_namespace = true
+
+  values = [
+    yamlencode({
+      alertmanager = {
+        persistence = {
+          storageClass = "gp2"
+        }
+      }
+      server = {
+        persistentVolume = {
+          storageClass = "gp2"
+        }
+      }
+    })
+  ]
+}
