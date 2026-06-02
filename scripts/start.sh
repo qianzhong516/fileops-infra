@@ -50,6 +50,7 @@ terraform apply --auto-approve
 echo "Data infra has been deployed successfully."
 rds_secret_name=$(terraform output -raw rds_secret_name)
 db_host=$(terraform output -raw db_host)
+tls_cert_arn=$(terraform output -raw tls_cert_arn)
 
 cd "$ROOT_DIR"/platform-addons
 if ! terraform state show aws_kms_key.sops_key >/dev/null 2>&1; then
@@ -67,10 +68,15 @@ terraform apply --auto-approve
 echo "Workloads have been deployed successfully."
 
 cat <<EOF
-=====================================
+==========================================================================
 Congratulations! Deployment is successful. Please perform the following steps next:
 1) Update the secret object name for \`db-secrets\` in app manifests to $rds_secret_name
 2) Update the DB_HOST in backend.yml to $db_host
 3) Run \`$kubectl\` to connect to your cluster
-=====================================
+4) Update TLS cert arn to \`$tls_cert_arn\` in your argocd, frontend ALB, backend ALB ingress files respectively.
+5) Update the following DNS records in Route53:
+	filesops.com A <web-alb-address-alias>
+	api.filesops.com A <backend-alb-address-alias>
+	argocd.filesops.com A <argocd-alb-address-alias>
+==========================================================================
 EOF

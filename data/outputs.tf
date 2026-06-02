@@ -5,3 +5,7 @@ output "db_host" {
 output "rds_secret_name" {
   value = data.aws_secretsmanager_secret.db_secret.name
 }
+
+output "tls_cert_arn" {
+  value = aws_acm_certificate.fileops.arn
+}
