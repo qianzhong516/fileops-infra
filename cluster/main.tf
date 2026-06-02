@@ -60,8 +60,8 @@ module "eks" {
       instance_types = ["t2.medium"]
 
       min_size     = 2
-      max_size     = 2
-      desired_size = 2
+      max_size     = 3
+      desired_size = 3
     }
   }
 
@@ -75,6 +75,7 @@ module "eks" {
     vpc-cni = {
       before_compute = true
     }
+    aws-ebs-csi-driver = {}
   }
 
   tags = merge(var.tags, {

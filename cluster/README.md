@@ -24,6 +24,9 @@
 
 | Name | Type |
 | ---- | ---- |
+| [aws_eks_pod_identity_association.ebs](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/eks_pod_identity_association) | resource |
+| [aws_iam_policy_attachment.ebs](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_policy_attachment) | resource |
+| [aws_iam_role.ebs](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role) | resource |
 | [aws_internet_gateway.igw](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/internet_gateway) | resource |
 | [aws_kms_alias.eks_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/kms_alias) | resource |
 | [aws_kms_grant.eks_cluster_role_grant](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/kms_grant) | resource |
