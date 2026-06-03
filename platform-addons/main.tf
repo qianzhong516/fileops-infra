@@ -57,11 +57,15 @@ resource "helm_release" "prometheus" {
       alertmanager = {
         persistence = {
           storageClass = "gp2"
+          // Default 2Gi
+          size = "1Gi"
         }
       }
       server = {
         persistentVolume = {
           storageClass = "gp2"
+          // Default 8Gi
+          size = "4Gi"
         }
       }
     })

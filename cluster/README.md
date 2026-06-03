@@ -24,6 +24,7 @@
 
 | Name | Type |
 | ---- | ---- |
+| [aws_eip.nat](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/eip) | resource |
 | [aws_eks_pod_identity_association.ebs](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/eks_pod_identity_association) | resource |
 | [aws_iam_policy_attachment.ebs](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_policy_attachment) | resource |
 | [aws_iam_role.ebs](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role) | resource |

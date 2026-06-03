@@ -57,11 +57,25 @@ module "eks" {
       kubernetes_version = "1.33"
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
       ami_type       = "AL2023_x86_64_STANDARD"
-      instance_types = ["t2.medium"]
+      instance_types = ["t3.medium"]
 
-      min_size     = 2
-      max_size     = 3
+      min_size     = 3
+      max_size     = 4
       desired_size = 3
+
+      block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+
+          ebs = {
+            # AMI snapshot requires volume_size >= 20.
+            volume_size           = 20
+            volume_type           = "gp3"
+            encrypted             = false
+            delete_on_termination = true
+          }
+        }
+      }
     }
   }
 

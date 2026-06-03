@@ -88,12 +88,18 @@ resource "aws_internet_gateway" "igw" {
   })
 }
 
+resource "aws_eip" "nat" {
+  domain = "vpc"
+
+  tags = merge(var.tags, {
+    Name = "fileops-nat-eip"
+  })
+}
+
 resource "aws_nat_gateway" "nat" {
-  connectivity_type = "public"
-  # TODO: set this for DEV only
-  availability_mode = "regional"
-  # Required when `availability_mode` is set to `regional`
-  vpc_id = aws_vpc.main.id
+  # TODO: Expands NAT for HA in production
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.public_subnet["public-a"].id
 
   depends_on = [aws_internet_gateway.igw]
 
