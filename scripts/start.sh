@@ -75,8 +75,9 @@ Congratulations! Deployment is successful. Please perform the following steps ne
 3) Run \`$kubectl\` to connect to your cluster
 4) Update TLS cert arn to \`$tls_cert_arn\` in your argocd, frontend ALB, backend ALB ingress files respectively.
 5) Update the following DNS records in Route53:
-	filesops.com A <web-alb-address-alias>
-	api.filesops.com A <backend-alb-address-alias>
-	argocd.filesops.com A <argocd-alb-address-alias>
+	filesops.com A <fileops-alb-address-alias>
+	api.filesops.com A <fileops-alb-address-alias>
+	argocd.filesops.com A <fileops-internal-alb-address-alias>
+	grafana.filesops.com A <fileops-internal-alb-address-alias>
 ==========================================================================
 EOF
