@@ -90,6 +90,9 @@ module "eks" {
       before_compute = true
     }
     aws-ebs-csi-driver = {}
+    metrics-server = {
+      addon_version = "v0.8.1-eksbuild.6"
+    }
   }
 
   tags = merge(var.tags, {

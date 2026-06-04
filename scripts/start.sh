@@ -79,5 +79,6 @@ Congratulations! Deployment is successful. Please perform the following steps ne
 	api.filesops.com A <fileops-alb-address-alias>
 	argocd.filesops.com A <fileops-internal-alb-address-alias>
 	grafana.filesops.com A <fileops-internal-alb-address-alias>
+6) Run \`k apply -f argo-ingress.yml\` to update the Argocd ALB.
 ==========================================================================
 EOF
