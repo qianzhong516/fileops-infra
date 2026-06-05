@@ -46,6 +46,7 @@
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_availability_zones"></a> [availability\_zones](#input\_availability\_zones) | n/a | `map(string)` | <pre>{<br/>  "private-a": "ap-southeast-2a",<br/>  "private-b": "ap-southeast-2b",<br/>  "private-c": "ap-southeast-2c",<br/>  "public-a": "ap-southeast-2a",<br/>  "public-b": "ap-southeast-2b",<br/>  "public-c": "ap-southeast-2c"<br/>}</pre> | no |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | `"fileops-cluster"` | no |
 | <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | n/a | `map(string)` | <pre>{<br/>  "private-a": "10.0.11.0/24",<br/>  "private-b": "10.0.12.0/24",<br/>  "private-c": "10.0.13.0/24"<br/>}</pre> | no |
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | n/a | `map(string)` | <pre>{<br/>  "public-a": "10.0.1.0/24",<br/>  "public-b": "10.0.2.0/24",<br/>  "public-c": "10.0.3.0/24"<br/>}</pre> | no |
 | <a name="input_region"></a> [region](#input\_region) | n/a | `string` | `"ap-southeast-2"` | no |
@@ -58,6 +59,7 @@
 | <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | n/a |
 | <a name="output_cluster_node_security_group_id"></a> [cluster\_node\_security\_group\_id](#output\_cluster\_node\_security\_group\_id) | n/a |
 | <a name="output_cluster_oidc_provider"></a> [cluster\_oidc\_provider](#output\_cluster\_oidc\_provider) | n/a |
+| <a name="output_eks_managed_node_groups"></a> [eks\_managed\_node\_groups](#output\_eks\_managed\_node\_groups) | n/a |
 | <a name="output_kubectl"></a> [kubectl](#output\_kubectl) | n/a |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | n/a |
 | <a name="output_region"></a> [region](#output\_region) | n/a |

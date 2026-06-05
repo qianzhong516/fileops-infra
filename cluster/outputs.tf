@@ -29,3 +29,7 @@ output "cluster_node_security_group_id" {
 output "cluster_oidc_provider" {
   value = module.eks.oidc_provider
 }
+
+output "eks_managed_node_groups" {
+  value = module.eks.eks_managed_node_groups
+}

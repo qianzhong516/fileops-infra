@@ -27,11 +27,14 @@ No modules.
 | Name | Type |
 | ---- | ---- |
 | [aws_eks_pod_identity_association.argocd_repo_server](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/eks_pod_identity_association) | resource |
+| [aws_eks_pod_identity_association.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/eks_pod_identity_association) | resource |
 | [aws_eks_pod_identity_association.lbc](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/eks_pod_identity_association) | resource |
 | [aws_iam_policy.argocd_repo_server](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.lbc](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_policy) | resource |
 | [aws_iam_role.argocd_repo_server](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role) | resource |
+| [aws_iam_role.karpenter_controller_role](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.lbc](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.karpenter_controller_policy](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy_attachment.argocd_repo_server_attach](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.lbc_attach](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_kms_alias.sops_key_alias](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/kms_alias) | resource |
@@ -39,13 +42,15 @@ No modules.
 | [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/3.1.1/docs/resources/release) | resource |
 | [helm_release.aws_lbc](https://registry.terraform.io/providers/hashicorp/helm/3.1.1/docs/resources/release) | resource |
 | [helm_release.grafana_operator](https://registry.terraform.io/providers/hashicorp/helm/3.1.1/docs/resources/release) | resource |
+| [helm_release.karpenter](https://registry.terraform.io/providers/hashicorp/helm/3.1.1/docs/resources/release) | resource |
 | [helm_release.prometheus](https://registry.terraform.io/providers/hashicorp/helm/3.1.1/docs/resources/release) | resource |
 | [helm_release.secrets_store](https://registry.terraform.io/providers/hashicorp/helm/3.1.1/docs/resources/release) | resource |
 | [helm_release.secrets_store_aws](https://registry.terraform.io/providers/hashicorp/helm/3.1.1/docs/resources/release) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/caller_identity) | data source |
 | [aws_eks_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/eks_cluster) | data source |
 | [aws_eks_cluster_auth.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/eks_cluster_auth) | data source |
-| [terraform_remote_state.state](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
+| [aws_iam_policy_document.karpenter_controller_policy](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/iam_policy_document) | data source |
+| [terraform_remote_state.cluster](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs
 

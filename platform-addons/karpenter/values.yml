@@ -1,0 +1,21 @@
+settings:
+  clusterName: ${cluster_name}
+  clusterEndpoint: ${cluster_endpoint}
+
+serviceAccount:
+  create: true
+  name: karpenter
+
+controller:
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  env:
+    - name: AWS_REGION
+      value: ${region}
+
+replicas: 1

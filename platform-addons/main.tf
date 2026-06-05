@@ -95,3 +95,21 @@ resource "helm_release" "grafana_operator" {
 
   depends_on = [helm_release.aws_lbc]
 }
+
+resource "helm_release" "karpenter" {
+  name       = "karpenter"
+  repository = "oci://public.ecr.aws/karpenter"
+  chart      = "karpenter"
+  namespace  = "kube-system"
+  version    = "1.12.1"
+
+  values = [
+    templatefile("${path.module}/karpenter/values.yml", {
+      region           = local.region
+      cluster_name     = local.cluster_name
+      cluster_endpoint = local.cluster_endpoint
+    })
+  ]
+
+  depends_on = [helm_release.aws_lbc, aws_eks_pod_identity_association.karpenter]
+}

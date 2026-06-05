@@ -3,6 +3,11 @@ variable "region" {
   default = "ap-southeast-2"
 }
 
+variable "cluster_name" {
+  type    = string
+  default = "fileops-cluster"
+}
+
 variable "public_subnets" {
   type = map(string)
   default = {

@@ -28,7 +28,8 @@ resource "aws_subnet" "private_subnet" {
   availability_zone = var.availability_zones[each.key]
 
   tags = merge(var.tags, {
-    Name = each.key
+    Name                     = each.key
+    "karpenter.sh/discovery" = var.cluster_name
   })
 }
 

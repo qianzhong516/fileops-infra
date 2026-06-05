@@ -2,7 +2,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "21.20.0"
 
-  name               = "fileops-cluster"
+  name               = var.cluster_name
   kubernetes_version = "1.33"
 
   endpoint_private_access = true
@@ -76,6 +76,15 @@ module "eks" {
           }
         }
       }
+
+      launch_template_tags = {
+        "kubernetes.io/cluster/${var.cluster_name}" = "owned"
+      }
+
+      // Add additional tags to the SGs
+      security_group_tags = {
+        "karpenter.sh/discovery" = var.cluster_name
+      }
     }
   }
 
@@ -95,7 +104,5 @@ module "eks" {
     }
   }
 
-  tags = merge(var.tags, {
-    Name = "fileops-cluster"
-  })
+  tags = var.tags
 }
