@@ -77,15 +77,18 @@ module "eks" {
         }
       }
 
+      iam_role_use_name_prefix = false
+      iam_role_name            = "KarpenterNodeRole-${var.cluster_name}"
+
       launch_template_tags = {
         "kubernetes.io/cluster/${var.cluster_name}" = "owned"
       }
-
-      // Add additional tags to the SGs
-      security_group_tags = {
-        "karpenter.sh/discovery" = var.cluster_name
-      }
     }
+  }
+
+  // Add additional tags to the SGs
+  node_security_group_tags = {
+    "karpenter.sh/discovery" = var.cluster_name
   }
 
   addons = {

@@ -15,6 +15,7 @@ resource "helm_release" "argocd" {
   depends_on = [helm_release.aws_lbc]
 }
 
+// TODO: Manage these helm charts in ArgoCD after moving to production.
 resource "helm_release" "secrets_store" {
   name       = "secrets-store-csi-driver"
   repository = "https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts"
