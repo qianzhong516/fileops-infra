@@ -60,6 +60,7 @@
 | <a name="output_cluster_node_security_group_id"></a> [cluster\_node\_security\_group\_id](#output\_cluster\_node\_security\_group\_id) | n/a |
 | <a name="output_cluster_oidc_provider"></a> [cluster\_oidc\_provider](#output\_cluster\_oidc\_provider) | n/a |
 | <a name="output_eks_managed_node_groups"></a> [eks\_managed\_node\_groups](#output\_eks\_managed\_node\_groups) | n/a |
+| <a name="output_example"></a> [example](#output\_example) | n/a |
 | <a name="output_kubectl"></a> [kubectl](#output\_kubectl) | n/a |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | n/a |
 | <a name="output_region"></a> [region](#output\_region) | n/a |

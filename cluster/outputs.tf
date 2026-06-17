@@ -33,3 +33,7 @@ output "cluster_oidc_provider" {
 output "eks_managed_node_groups" {
   value = module.eks.eks_managed_node_groups
 }
+
+output "example" {
+  value = "test"
+}

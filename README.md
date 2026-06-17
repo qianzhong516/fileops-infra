@@ -31,7 +31,8 @@ The infrastructure setup is divided into a few parts:
 
 ## GitHub Workflows
 
-`terraform plan` is built into the CI pipeline.
+- **Pull requests:** `terraform plan` runs and posts results as PR comments.
+- **Push to `main`:** non-speculative plan + apply, gated by manual approval per stack (`cluster`, `data`, `platform-addons`, `workloads`).
 
 ## Terraform Docs
 
