@@ -79,6 +79,10 @@ resource "helm_release" "prometheus" {
           // Default 8Gi
           size = "4Gi"
         }
+        global = {
+          // For demo purpose
+          scrape_interval = "30s"
+        }
       }
     })
   ]
