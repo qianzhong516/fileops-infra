@@ -3,7 +3,7 @@ module "eks" {
   version = "21.20.0"
 
   name               = var.cluster_name
-  kubernetes_version = "1.33"
+  kubernetes_version = "1.36"
 
   endpoint_private_access = true
   endpoint_public_access  = true
@@ -54,7 +54,7 @@ module "eks" {
   # EKS Managed Node Group(s)
   eks_managed_node_groups = {
     fileops-node-group = {
-      kubernetes_version = "1.33"
+      kubernetes_version = "1.36"
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
       ami_type       = "AL2023_x86_64_STANDARD"
       instance_types = ["t3.medium"]

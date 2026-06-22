@@ -5,8 +5,3 @@ locals {
   cluster_endpoint       = data.aws_eks_cluster.cluster.endpoint
   cluster_token          = data.aws_eks_cluster_auth.cluster.token
 }
-
-variable "git_ssh_private_key" {
-  type      = string
-  sensitive = true
-}

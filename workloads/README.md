@@ -25,16 +25,13 @@ No modules.
 | Name | Type |
 | ---- | ---- |
 | [kubernetes_manifest.app_workloads](https://registry.terraform.io/providers/hashicorp/kubernetes/3.1.0/docs/resources/manifest) | resource |
-| [kubernetes_manifest.git_repo_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/3.1.0/docs/resources/manifest) | resource |
 | [aws_eks_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/eks_cluster) | data source |
 | [aws_eks_cluster_auth.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/eks_cluster_auth) | data source |
 | [terraform_remote_state.state](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-| ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_git_ssh_private_key"></a> [git\_ssh\_private\_key](#input\_git\_ssh\_private\_key) | n/a | `string` | n/a | yes |
+No inputs.
 
 ## Outputs
 

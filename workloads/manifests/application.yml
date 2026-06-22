@@ -7,7 +7,7 @@ spec:
   project: default
 
   sources:
-    - repoURL: git@github.com:qianzhong516/fileops-app-manifests.git
+    - repoURL: https://github.com/qianzhong516/fileops-app-manifests.git
       targetRevision: HEAD
       path: apps
 
